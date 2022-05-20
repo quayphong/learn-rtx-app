@@ -1,9 +1,42 @@
-export interface AdminLayoutProps {}
- 
-export function AdminLayout(props: AdminLayoutProps){
+import { Box } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { Header, Sidebar } from "components/Common";
+
+const useStyles = makeStyles({
+    root: {
+        display: 'grid',
+        gridTemplateRows: 'auto 1fr',
+        gridTemplateColumns: '240px  1fr',
+        gridTemplateAreas: `"header header" "sidebar main"`,
+
+        minHeight: '100vh'
+    },
+    header: {
+        gridArea: 'header',
+        borderBottom: `1px solid rgba(0,0,0,0.12)`
+    },
+    sidebar: {
+        gridArea: 'sidebar',
+        borderRight: `1px solid rgba(0,0,0,0.12)`
+    },
+    main: {
+        gridArea: 'main',
+        padding: '16px 24px'
+    }
+})
+export function AdminLayout(){
+    const classes = useStyles();
     return (
-        <div>
-            Admin Page
-        </div>
+        <Box className={classes.root}>
+            <Box className={classes.header}>
+                <Header />
+            </Box>
+            <Box className={classes.sidebar}>
+                <Sidebar />
+            </Box>
+            <Box className={classes.main}>
+                MAIN
+            </Box>
+        </Box>
     );
 }
