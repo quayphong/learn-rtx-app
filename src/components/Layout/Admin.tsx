@@ -1,6 +1,9 @@
 import { Box } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Header, Sidebar } from "components/Common";
+import Dashboard from "features/dashboard";
+import StudentFeature from "features/student";
+import {Route, Routes} from 'react-router-dom'
 
 const useStyles = makeStyles({
     root: {
@@ -21,7 +24,7 @@ const useStyles = makeStyles({
     },
     main: {
         gridArea: 'main',
-        padding: '16px 24px'
+        /*padding: '16px 24px' */
     }
 })
 export function AdminLayout(){
@@ -35,7 +38,10 @@ export function AdminLayout(){
                 <Sidebar />
             </Box>
             <Box className={classes.main}>
-                MAIN
+                <Routes>
+                    <Route path="/dashboard" element= {<Dashboard />}></Route>
+                    <Route path="/students" element= {<StudentFeature />}></Route>
+                </Routes>
             </Box>
         </Box>
     );
